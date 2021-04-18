@@ -1,4 +1,5 @@
  import React from 'react';
+ import PropTypes from 'prop-types';
 
 // function App() {
 // 関数（ファンクショナル）コンポーネント
@@ -7,7 +8,7 @@ const App = () => {
   const profiles = [
     {name: "Taro", age: 10},
     {name: "Hanako", age: 5},
-    {name: "NoName"}
+    {name: "NoName", age: 3}
   ]
 
   return (
@@ -25,8 +26,15 @@ const User = (props) => {
   return <div>Hi, I am {props.name}, {props.age} years old!</div>
 }
 
-User.defaultProps = {
-  age: 1
+// デフォルト値の設定
+// User.defaultProps = {
+//   age: 1
+// }
+
+// 型チェック
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 
 export default App;
