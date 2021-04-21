@@ -1,19 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
+// store変数に格納した値をコンポーネント内で使用可能にする
 import { Provider } from 'react-redux';
 
 import './index.css';
 import reducer from './reducers';
 import App from './components/App';
+import reportWebVitals from './reportWebVitals';
 
-import registerServiceWorker from './registerServiceWorker';
-// import reportWebVitals from './reportWebVitals';
+const store = createStore(reducer);
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+reportWebVitals();
